@@ -1,0 +1,35 @@
+CREATE DATABASE PHP-CRUD;
+
+DROP DATABASE php_crud;
+
+CREATE TABLE Users (
+    UserID int NOT NULL AUTO_INCREMENT,
+    Email varchar(50) NOT NULL,
+    Password varchar(255) NOT NULL,
+    Role varchar(10) NOT NULL,
+    PRIMARY KEY (UserID)
+) ENGINE=InnoDB CHARACTER SET utf-8 COLLATE utf8_general_ci;
+
+ALTER TABLE Users
+ADD Username varchar(50) NOT NULL
+AFTER Email;
+
+INSERT INTO Users (Email, Username, Password, Role)
+VALUES (admin@gmail.com, admin, admin123, admin);
+
+VALUES (bobby@gmail.com, bobby, bobby1996, user);
+VALUES (yok@gmail.com, yok23, yok1996, user);
+VALUES (robin@gmail.com, robin, robin1996, user);
+VALUES (tommy@gmail.com, tommy, tommy1996, user);
+VALUES (nanny@gmail.com, nanny, nanny1996, user);
+VALUES (wan@gmail.com, wan, wan1996, user);
+
+UPDATE table_name
+SET column1 = value1, ...
+WHERE (condition) ;
+
+ALTER TABLE table_name
+DROP COLUMN column_name;
+
+ALTER TABLE table_name
+(MODIFY/ALTER) COLUMN column_name datatype;

@@ -1,0 +1,24 @@
+1.
+DATEDIFF(YY, @DOB, @NOW) -
+CASE WHEN DATEPART(dayofyear, @DOB) > DATEPART(dayofyear, @NOW) THEN 1 ELSE 0 END
+
+-----------------------------------------------------------------------------------------------------
+2.
+DATEDIFF(YY, @DOB, @NOW) - 
+  CASE WHEN DATEADD(YY, DATEDIFF(YY, @DOB, @NOW), @DOB) > @NOW THEN 1 ELSE 0 END
+
+-------------------------------------
+DECLARE @AGE INT = DATEDIFF(YY, @DOB, @NOW)
+IF DATEADD(YY, @AGE, @DOB) > @NOW
+SET @AGE = @AGE - 1
+----------------------------------------------------------------------------------------------------
+3. 
+DATEDIFF(YY, @DOB, @NOW) - 
+  CASE WHEN MONTH(@DOB) > MONTH(@NOW) 
+    OR MONTH(@DOB) = MONTH(@NOW) AND DAY(@DOB) > DAY(@NOW) 
+  THEN 1 ELSE 0 END
+-----------------------------------------------------------------------------------------------------
+4.
+DATEDIFF(YY, @DOB, @NOW) - 
+  CEILING(0.5 * SIGN((MONTH(@DOB) - MONTH(@NOW)) * 31 + DAY(@DOB) - DAY(@NOW)))
+
